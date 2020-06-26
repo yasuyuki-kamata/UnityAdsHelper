@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 namespace UnityAdsHelper
 {
-    [CreateAssetMenu(fileName = "UnityAdsListener", menuName = "UnityAdsHelper/Create Listener File", order = 1001)]
-    public class UnityAdsListener : ScriptableObject, IUnityAdsListener
+    [RequireComponent(typeof(UnityAdsHelper))]
+    public class UnityAdsListener : MonoBehaviour, IUnityAdsListener
     {
         [SerializeField] private UnityEvent onAdsReady;
-        [SerializeField] private UnityEvent onAdsError;
-        [SerializeField] private UnityEvent onAdsStart;
+        [SerializeField] private UnityEvent onAdsDidError;
+        [SerializeField] private UnityEvent onAdsDidStart;
         [SerializeField] private UnityEvent onAdsFinished;
         [SerializeField] private UnityEvent onAdsSkipped;
         [SerializeField] private UnityEvent onAdsFailed;
@@ -22,12 +22,12 @@ namespace UnityAdsHelper
 
         public void OnUnityAdsDidError(string message)
         {
-            onAdsError.Invoke();
+            onAdsDidError.Invoke();
         }
 
         public void OnUnityAdsDidStart(string placementId)
         {
-            onAdsStart.Invoke();
+            onAdsDidStart.Invoke();
         }
 
         public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
