@@ -53,7 +53,7 @@ namespace UnityAdsHelper
 		
 		void OnDestroy()
 		{
-		
+			Advertisement.RemoveListener(_listener);
 		}
 	}
 }
