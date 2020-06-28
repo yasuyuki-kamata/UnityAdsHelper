@@ -8,12 +8,14 @@ namespace UnityAdsHelper
     [RequireComponent(typeof(UnityAdsHelper))]
     public class UnityAdsListener : MonoBehaviour, IUnityAdsListener
     {
+        #pragma warning disable 0649
         [SerializeField] private UnityEvent onAdsReady;
         [SerializeField] private UnityEvent onAdsDidError;
         [SerializeField] private UnityEvent onAdsDidStart;
         [SerializeField] private UnityEvent onAdsFinished;
         [SerializeField] private UnityEvent onAdsSkipped;
         [SerializeField] private UnityEvent onAdsFailed;
+        #pragma  warning restore 0649
         
         public void OnUnityAdsReady(string placementId)
         {

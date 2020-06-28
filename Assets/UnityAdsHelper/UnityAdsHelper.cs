@@ -7,6 +7,7 @@ namespace UnityAdsHelper
 {
 	public class UnityAdsHelper : MonoBehaviour
 	{
+		#pragma warning disable 0414
 		[SerializeField] private string gameIdAppleAppStore = "";
 		[SerializeField] private string gameIdGooglePlay = "";
 		[SerializeField] private bool useAnotherGameIdForTest = false;
@@ -14,6 +15,7 @@ namespace UnityAdsHelper
 		[SerializeField] private string gameIdGooglePlayForTest = "";
 		[SerializeField] private bool initializeOnStart = true;
 		[SerializeField] private bool enableTestMode = false;
+		#pragma warning restore 0414
 		
 		private string _gameId = "";
 		private UnityAdsListener _listener;
@@ -47,6 +49,11 @@ namespace UnityAdsHelper
 		{
 			if (!Advertisement.IsReady(placementId)) return;
 			Advertisement.Show(placementId);
+		}
+		
+		void OnDestroy()
+		{
+		
 		}
 	}
 }
