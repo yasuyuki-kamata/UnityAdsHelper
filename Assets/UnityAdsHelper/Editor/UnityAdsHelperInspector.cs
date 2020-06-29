@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace UnityAdsHelper.Editor
@@ -79,8 +78,10 @@ namespace UnityAdsHelper.Editor
             EditorGUILayout.PropertyField(onAdsSkipped);
             var onAdsFailed = serializedObject.FindProperty("onAdsFailed");
             EditorGUILayout.PropertyField(onAdsFailed);
-            serializedObject.ApplyModifiedProperties();
             EditorGUI.indentLevel--;
+            
+            // Apply modified properties
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }
