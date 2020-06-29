@@ -110,42 +110,6 @@ namespace UnityAdsHelper
 			get => enableTestMode;
 			set => enableTestMode = value;
 		}
-
-		// public UnityEvent OnAdsReady
-		// {
-		// 	get => onAdsReady;
-		// 	set => onAdsReady = value;
-		// }
-		//
-		// public UnityEvent OnAdsDidStart
-		// {
-		// 	get => onAdsDidStart;
-		// 	set => onAdsDidStart = value;
-		// }
-		//
-		// public UnityEvent OnAdsDidError
-		// {
-		// 	get => onAdsDidError;
-		// 	set => onAdsDidError = value;
-		// }
-		//
-		// public UnityEvent OnAdsFinished
-		// {
-		// 	get => onAdsFinished;
-		// 	set => onAdsFinished = value;
-		// }
-		//
-		// public UnityEvent OnAdsSkipped
-		// {
-		// 	get => onAdsSkipped;
-		// 	set => onAdsSkipped = value;
-		// }
-		//
-		// public UnityEvent OnAdsFailed
-		// {
-		// 	get => onAdsFailed;
-		// 	set => onAdsFailed = value;
-		// }
 		
 #pragma endregion
 #pragma warning restore 1633
