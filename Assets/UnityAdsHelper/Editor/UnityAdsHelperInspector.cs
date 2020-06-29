@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace UnityAdsHelper.Editor
@@ -9,15 +10,22 @@ namespace UnityAdsHelper.Editor
 	    private const string OperateDashboardUrl = "https://dashboard.unity3d.com";
         private const string UnityAdsKnowledgeBaseUrl = "https://unityads.unity3d.com/help/index";
         private const string UnityAdsForumUrl = "https://forum.unity.com/forums/unity-ads.67/";
+
+        private Texture _texture;
         
         private void OnEnable()
         {
+	        _texture = AssetDatabase.LoadAssetAtPath<Texture>("Assets/UnityAdsHelper/Editor/logo.png");
         }
 
         public override void OnInspectorGUI()
         {
 	        var helper = target as UnityAdsHelper;
 	        if (helper == null) return;
+
+	        GUI.DrawTexture(new Rect(EditorGUIUtility.currentViewWidth/2-101.5f,10f, 203f, 50f), _texture);
+	        
+	        EditorGUILayout.Space(60f);
 	        
 	        EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Dashboard")) Help.BrowseURL(OperateDashboardUrl);
@@ -57,7 +65,22 @@ namespace UnityAdsHelper.Editor
             
             EditorGUILayout.Space();
             
-            //TODO: ここにリスナースクリプトを追加するボタン
+            EditorGUILayout.LabelField("Unity Ads Listener", EditorStyles.boldLabel);
+            EditorGUI.indentLevel++;
+            var onAdsReady = serializedObject.FindProperty("onAdsReady");
+            EditorGUILayout.PropertyField(onAdsReady);
+            var onAdsDidError = serializedObject.FindProperty("onAdsDidError");
+            EditorGUILayout.PropertyField(onAdsDidError);
+            var onAdsDidStart = serializedObject.FindProperty("onAdsDidStart");
+            EditorGUILayout.PropertyField(onAdsDidStart);
+            var onAdsFinished = serializedObject.FindProperty("onAdsFinished");
+            EditorGUILayout.PropertyField(onAdsFinished);
+            var onAdsSkipped = serializedObject.FindProperty("onAdsSkipped");
+            EditorGUILayout.PropertyField(onAdsSkipped);
+            var onAdsFailed = serializedObject.FindProperty("onAdsFailed");
+            EditorGUILayout.PropertyField(onAdsFailed);
+            serializedObject.ApplyModifiedProperties();
+            EditorGUI.indentLevel--;
         }
     }
 }

@@ -1,22 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.Events;
 
 namespace UnityAdsHelper
 {
-	public class UnityAdsHelper : MonoBehaviour
+	public class UnityAdsHelper : MonoBehaviour, IUnityAdsListener
 	{
-		#pragma warning disable 0414
+#pragma warning disable 0414
 		[SerializeField] private string gameIdAppleAppStore = "3219868";
 		[SerializeField] private string gameIdGooglePlay = "3219869";
 		[SerializeField] private bool useAnotherGameIdForDevelopment = false;
 		[SerializeField] private string gameIdAppleAppStoreForDevelopment = "3219868";
 		[SerializeField] private string gameIdGooglePlayForDevelopment = "3219869";
 		[SerializeField] private bool initializeOnStart = true;
-		[SerializeField] private bool enableTestMode = false;
-		#pragma warning restore 0414
+		[SerializeField] private bool enableTestMode;
+#pragma warning restore 0414
 		
+#pragma warning disable 0649
+		[SerializeField] private UnityEvent onAdsReady;
+		[SerializeField] private UnityEvent onAdsDidError;
+		[SerializeField] private UnityEvent onAdsDidStart;
+		[SerializeField] private UnityEvent onAdsFinished;
+		[SerializeField] private UnityEvent onAdsSkipped;
+		[SerializeField] private UnityEvent onAdsFailed;
+#pragma  warning restore 0649
+
 		private string _gameId;
-		private UnityAdsListener _listener;
 
 		private void Start()
 		{
@@ -44,11 +53,7 @@ namespace UnityAdsHelper
 
 			Advertisement.Initialize(_gameId, enableTestMode);
 
-			_listener = GetComponent<UnityAdsListener>();
-			if (_listener != null)
-			{
-				Advertisement.AddListener(_listener);
-			}
+			Advertisement.AddListener(this);
 		}
 		
 		public void ShowVideoAds(string placementId)
@@ -59,9 +64,11 @@ namespace UnityAdsHelper
 
 		private void OnDestroy()
 		{
-			Advertisement.RemoveListener(_listener);
+			Advertisement.RemoveListener(this);
 		}
 		
+#pragma warning disable 1633
+#pragma region Properties
 		public string GameIdGooglePlay
 		{
 			get => gameIdGooglePlay;
@@ -103,5 +110,68 @@ namespace UnityAdsHelper
 			get => enableTestMode;
 			set => enableTestMode = value;
 		}
+
+		// public UnityEvent OnAdsReady
+		// {
+		// 	get => onAdsReady;
+		// 	set => onAdsReady = value;
+		// }
+		//
+		// public UnityEvent OnAdsDidStart
+		// {
+		// 	get => onAdsDidStart;
+		// 	set => onAdsDidStart = value;
+		// }
+		//
+		// public UnityEvent OnAdsDidError
+		// {
+		// 	get => onAdsDidError;
+		// 	set => onAdsDidError = value;
+		// }
+		//
+		// public UnityEvent OnAdsFinished
+		// {
+		// 	get => onAdsFinished;
+		// 	set => onAdsFinished = value;
+		// }
+		//
+		// public UnityEvent OnAdsSkipped
+		// {
+		// 	get => onAdsSkipped;
+		// 	set => onAdsSkipped = value;
+		// }
+		//
+		// public UnityEvent OnAdsFailed
+		// {
+		// 	get => onAdsFailed;
+		// 	set => onAdsFailed = value;
+		// }
+		
+#pragma endregion
+#pragma warning restore 1633
+		
+		#pragma warning disable 1633
+		#pragma region implemented from IUnityAdsListener
+		public void OnUnityAdsReady(string placementId)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public void OnUnityAdsDidError(string message)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public void OnUnityAdsDidStart(string placementId)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+		{
+			throw new System.NotImplementedException();
+		}
+		#pragma endregion
+		#pragma warning restore 1633
 	}
 }
