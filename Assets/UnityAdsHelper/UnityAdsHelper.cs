@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.Events;
 
@@ -118,22 +119,35 @@ namespace UnityAdsHelper
 		#pragma region implemented from IUnityAdsListener
 		public void OnUnityAdsReady(string placementId)
 		{
-			throw new System.NotImplementedException();
+			onAdsReady.Invoke();
 		}
 
 		public void OnUnityAdsDidError(string message)
 		{
-			throw new System.NotImplementedException();
+			onAdsDidError.Invoke();
 		}
 
 		public void OnUnityAdsDidStart(string placementId)
 		{
-			throw new System.NotImplementedException();
+			onAdsDidStart.Invoke();
 		}
 
 		public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
 		{
-			throw new System.NotImplementedException();
+			switch (showResult)
+			{
+				case ShowResult.Finished:
+					onAdsFinished.Invoke();
+					break;
+				case ShowResult.Skipped:
+					onAdsSkipped.Invoke();
+					break;
+				case ShowResult.Failed:
+					onAdsFailed.Invoke();
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(showResult), showResult, null);
+			}
 		}
 		#pragma endregion
 		#pragma warning restore 1633
