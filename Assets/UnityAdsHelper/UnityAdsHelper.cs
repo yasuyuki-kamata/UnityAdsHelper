@@ -7,6 +7,9 @@ namespace UnityAdsHelper
 {
 	public class UnityAdsHelper : MonoBehaviour, IUnityAdsListener
 	{
+		private const string VideoPlacement = "video";
+		private const string RewardedVideoPlacement = "rewardedVideo";
+		
 #pragma warning disable 0414
 		[SerializeField] private string gameIdAppleAppStore = "3219868";
 		[SerializeField] private string gameIdGooglePlay = "3219869";
@@ -36,6 +39,11 @@ namespace UnityAdsHelper
 			}
 		}
 
+		/// <summary>
+		/// Initialize Unity Ads
+		///
+		/// Initialize with selected platform's game id, and AddListener
+		/// </summary>
 		public void InitUnityAds()
 		{
 			Advertisement.AddListener(this);
@@ -56,13 +64,39 @@ namespace UnityAdsHelper
 
 			Advertisement.Initialize(_gameId, enableTestMode);
 		}
+
+		/// <summary>
+		/// Show video ads using "video" placement
+		/// 
+		/// "video" is a non-rewarded Placement that serves Video ad and Playable ad formats, and allows users to skip the ad after 5 seconds.
+		/// </summary>
+		public void ShowVideoAds()
+		{
+			if (!Advertisement.IsReady(VideoPlacement)) return;
+			Advertisement.Show(VideoPlacement);
+		}
 		
+		/// <summary>
+		/// Show ads with placement id
+		/// </summary>
+		/// <param name="placementId">Placement ID</param>
 		public void ShowVideoAds(string placementId)
 		{
 			if (!Advertisement.IsReady(placementId)) return;
 			Advertisement.Show(placementId);
 		}
 
+		/// <summary>
+		/// Show rewarded video ads using "rewardedVideo" placement
+		/// 
+		/// "rewardedVideo" is a rewarded Placement that serves Video ad and Playable ad formats, but does not allow skipping.
+		/// </summary>
+		public void ShowRewardedVideoAds()
+		{
+			if (!Advertisement.IsReady(RewardedVideoPlacement)) return;
+			Advertisement.Show(RewardedVideoPlacement);
+		}
+		
 		private void OnDestroy()
 		{
 			Advertisement.RemoveListener(this);
@@ -115,8 +149,8 @@ namespace UnityAdsHelper
 #pragma endregion
 #pragma warning restore 1633
 		
-		#pragma warning disable 1633
-		#pragma region implemented from IUnityAdsListener
+#pragma warning disable 1633
+#pragma region implemented from IUnityAdsListener
 		public void OnUnityAdsReady(string placementId)
 		{
 			onAdsReady.Invoke();
@@ -149,7 +183,7 @@ namespace UnityAdsHelper
 					throw new ArgumentOutOfRangeException(nameof(showResult), showResult, null);
 			}
 		}
-		#pragma endregion
-		#pragma warning restore 1633
+#pragma endregion
+#pragma warning restore 1633
 	}
 }
