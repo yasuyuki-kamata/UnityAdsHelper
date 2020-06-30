@@ -25,7 +25,7 @@ namespace UnityAdsHelper.Editor
 				targetInfo,
 				false
 				) as UnityAction<string>;
-			UnityEventTools.AddStringPersistentListener(button.onClick, action, "video");
+			UnityEventTools.AddStringPersistentListener(button.onClick, action, "rewardedVideo");
 
 			buttonGameObject.GetComponentInChildren<Text>().text = "Show video ads";
 		}
