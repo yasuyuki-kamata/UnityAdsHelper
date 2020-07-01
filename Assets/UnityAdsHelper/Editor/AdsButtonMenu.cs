@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace UnityAdsHelper.Editor
 {
-	public class AdsButtonMenu
+	public static class AdsButtonMenu
 	{
 		[MenuItem("Unity Ads Helper/Create Video Ads Button")]
 		private static void CreateInterstitialAdsButton()
@@ -27,7 +27,11 @@ namespace UnityAdsHelper.Editor
 			EditorApplication.ExecuteMenuItem("GameObject/UI/Button");
 			var buttonGameObject = Selection.activeGameObject;
 			var rectTransform = buttonGameObject.transform as RectTransform;
-			if (rectTransform != null) rectTransform.anchoredPosition = Vector2.zero;
+			if (rectTransform != null)
+			{
+				rectTransform.anchoredPosition = Vector2.zero;
+				rectTransform.sizeDelta = new Vector2(200, 50);
+			}
 			var button = buttonGameObject.GetComponent<Button>();
 			var unityAdsHelper = Object.FindObjectOfType<UnityAdsHelper>();
 			GameObject helperGameObject;
@@ -53,7 +57,7 @@ namespace UnityAdsHelper.Editor
 			UnityEventTools.AddStringPersistentListener(button.onClick, action, placementId);
 
 			// Change button text
-			buttonGameObject.GetComponentInChildren<Text>().text = "Show video ads";
+			buttonGameObject.GetComponentInChildren<Text>().text = $"Show {placementId} ads";
 
 			// Set selection
 			Selection.activeGameObject = helperGameObject;
