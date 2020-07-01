@@ -10,8 +10,19 @@ namespace UnityAdsHelper.Editor
 {
 	public class AdsButtonMenu
 	{
-		[MenuItem("Unity Ads Helper/Create Ads Button")]
-		private static void CreateAdsButton()
+		[MenuItem("Unity Ads Helper/Create Video Ads Button")]
+		private static void CreateInterstitialAdsButton()
+		{
+			CreateAdsButton("video");
+		}
+
+		[MenuItem("Unity Ads Helper/Create Rewarded Ads Button")]
+		private static void CreateRewardedAdsButton()
+		{
+			CreateAdsButton("rewardedVideo");
+		}
+
+		private static void CreateAdsButton(string placementId)
 		{
 			EditorApplication.ExecuteMenuItem("GameObject/UI/Button");
 			var buttonGameObject = Selection.activeGameObject;
@@ -39,7 +50,7 @@ namespace UnityAdsHelper.Editor
 				targetInfo,
 				false
 				) as UnityAction<string>;
-			UnityEventTools.AddStringPersistentListener(button.onClick, action, "rewardedVideo");
+			UnityEventTools.AddStringPersistentListener(button.onClick, action, placementId);
 
 			// Change button text
 			buttonGameObject.GetComponentInChildren<Text>().text = "Show video ads";
