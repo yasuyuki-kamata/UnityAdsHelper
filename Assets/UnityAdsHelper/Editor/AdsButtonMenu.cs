@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEditor;
+using UnityEditor.Advertisements;
 using UnityEditor.Events;
 using UnityEngine;
 using UnityEngine.Events;
@@ -62,5 +63,29 @@ namespace UnityAdsHelper.Editor
 			// Set selection
 			Selection.activeGameObject = helperGameObject;
 		}
+
+#if ENABLE_CLOUD_SERVICES_ADS
+		[MenuItem("Unity Ads Helper/Apply Game IDs from connected Cloud Services")]
+		private static void ApplyGameIds()
+		{
+			var unityAdsHelper = Object.FindObjectOfType<UnityAdsHelper>();
+			var gameIdAppleAppStoreFromCloudServices = AdvertisementSettings.GetGameId(RuntimePlatform.IPhonePlayer);
+			var gameIdGooglePlayFromCloudServices= AdvertisementSettings.GetGameId(RuntimePlatform.Android);
+			if (gameIdAppleAppStoreFromCloudServices != unityAdsHelper.GameIdAppleAppStore ||
+			    gameIdGooglePlayFromCloudServices != unityAdsHelper.GameIdGooglePlay)
+			{
+				if (EditorUtility.DisplayDialog(
+					"Apply Game IDs from connected Cloud Services", $"Replace your Game IDs?\n\n" +
+				    $"Apple AppStore\n{unityAdsHelper.GameIdAppleAppStore}=>{gameIdAppleAppStoreFromCloudServices}\n\n" +
+				    $"GooglePlay\n{unityAdsHelper.GameIdGooglePlay}=>{gameIdGooglePlayFromCloudServices}",
+					"Replace",
+					"Cancel"))
+				{
+					unityAdsHelper.GameIdAppleAppStore = gameIdAppleAppStoreFromCloudServices;
+					unityAdsHelper.GameIdGooglePlay = gameIdGooglePlayFromCloudServices;
+				}
+			}
+		}
+#endif
 	}
 }
