@@ -15,6 +15,8 @@ namespace UnityAdsHelper.Editor
 		{
 			EditorApplication.ExecuteMenuItem("GameObject/UI/Button");
 			var buttonGameObject = Selection.activeGameObject;
+			var rectTransform = buttonGameObject.transform as RectTransform;
+			if (rectTransform != null) rectTransform.anchoredPosition = Vector2.zero;
 			var button = buttonGameObject.GetComponent<Button>();
 			var unityAdsHelper = Object.FindObjectOfType<UnityAdsHelper>();
 			GameObject helperGameObject;
