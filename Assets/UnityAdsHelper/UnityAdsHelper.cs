@@ -38,6 +38,8 @@ namespace UnityAdsHelper
 
 		public void InitUnityAds()
 		{
+			Advertisement.AddListener(this);
+
 			if (!Advertisement.isSupported || Advertisement.isInitialized) return;
 #if UNITY_IOS
 			_gameId = useAnotherGameIdForDevelopment && Debug.isDebugBuild ? gameIdAppleAppStoreForDevelopment : gameIdAppleAppStore;
@@ -53,8 +55,6 @@ namespace UnityAdsHelper
 			}
 
 			Advertisement.Initialize(_gameId, enableTestMode);
-
-			Advertisement.AddListener(this);
 		}
 		
 		public void ShowVideoAds(string placementId)
