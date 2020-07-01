@@ -11,13 +11,13 @@ namespace UnityAdsHelper.Editor
 {
 	public static class AdsButtonMenu
 	{
-		[MenuItem("Unity Ads Helper/Create Video Ads Button")]
+		[MenuItem("Unity Ads Helper/Button/Create Video Ads Button")]
 		private static void CreateInterstitialAdsButton()
 		{
 			CreateAdsButton("video");
 		}
 
-		[MenuItem("Unity Ads Helper/Create Rewarded Ads Button")]
+		[MenuItem("Unity Ads Helper/Button/Create Rewarded Ads Button")]
 		private static void CreateRewardedAdsButton()
 		{
 			CreateAdsButton("rewardedVideo");
@@ -65,7 +65,7 @@ namespace UnityAdsHelper.Editor
 		}
 
 #if ENABLE_CLOUD_SERVICES_ADS
-		[MenuItem("Unity Ads Helper/Apply Game IDs from connected Cloud Services")]
+		[MenuItem("Unity Ads Helper/Game ID/Apply Game IDs from connected Cloud Services")]
 		private static void ApplyGameIds()
 		{
 			var unityAdsHelper = Object.FindObjectOfType<UnityAdsHelper>();
