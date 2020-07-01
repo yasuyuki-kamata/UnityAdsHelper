@@ -73,6 +73,17 @@ namespace UnityAdsHelper
 			if (!Advertisement.IsReady(VideoPlacement)) return;
 			Advertisement.Show(VideoPlacement);
 		}
+
+		/// <summary>
+		/// Show video ads using "video" placement
+		/// 
+		/// "video" is a non-rewarded Placement that serves Video ad and Playable ad formats, and allows users to skip the ad after 5 seconds.
+		/// </summary>
+		public void ShowVideoAds()
+		{
+			if (!Advertisement.IsReady(VideoPlacement)) return;
+			Advertisement.Show(VideoPlacement);
+		}
 		
 		/// <summary>
 		/// Show ads with placement id
