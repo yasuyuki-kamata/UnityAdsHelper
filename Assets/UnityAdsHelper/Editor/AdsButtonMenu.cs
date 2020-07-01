@@ -40,6 +40,10 @@ namespace UnityAdsHelper.Editor
 			{
 				helperGameObject = new GameObject("UnityAdsHelper");
 				unityAdsHelper = helperGameObject.AddComponent<UnityAdsHelper>();
+#if ENABLE_CLOUD_SERVICES_ADS
+				unityAdsHelper.GameIdAppleAppStore = AdvertisementSettings.GetGameId(RuntimePlatform.IPhonePlayer);
+				unityAdsHelper.GameIdGooglePlay = AdvertisementSettings.GetGameId(RuntimePlatform.Android);
+#endif
 			}
 			else
 			{
