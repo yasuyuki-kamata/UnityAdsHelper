@@ -53,8 +53,6 @@ namespace UnityAdsHelper
 			_gameId = useAnotherGameIdForDevelopment && Debug.isDebugBuild ? gameIdAppleAppStoreForDevelopment : gameIdAppleAppStore;
 #elif UNITY_ANDROID
 			_gameId = useAnotherGameIdForDevelopment && Debug.isDebugBuild ? gameIdGooglePlayForDevelopment : gameIdGooglePlay;
-#else
-			Debug.Log("else");
 #endif
 			if (string.IsNullOrEmpty(_gameId))
 			{
