@@ -2,7 +2,7 @@
 
 Easy to implement Unity Ads into your Unity project
 
-![ss](https://t.gyazo.com/teams/unity/fbbd15b0a3cb0229a4319004f4537631.gif)
+![ss](https://t.gyazo.com/teams/unity/4f23dd9486f75da2954443bf07866d7c.gif)
 
 ## Download unitypackage
 
