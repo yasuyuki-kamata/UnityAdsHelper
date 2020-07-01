@@ -41,14 +41,14 @@ namespace UnityAdsHelper.Editor
 
             helper.GameIdAppleAppStore = EditorGUILayout.TextField("Apple AppStore", helper.GameIdAppleAppStore);
 
-	        if (helper.GameIdAppleAppStore == "3219868" || string.IsNullOrEmpty(helper.GameIdAppleAppStore))
+	        if (string.IsNullOrEmpty(helper.GameIdAppleAppStore))
             {
 	            EditorGUILayout.HelpBox("You must put your Game ID for Apple AppStore", MessageType.Warning);
             }
 
 	        EditorGUILayout.Space();
 	        helper.GameIdGooglePlay = EditorGUILayout.TextField("GooglePlay", helper.GameIdGooglePlay);
-            if (helper.GameIdGooglePlay == "3219869" || string.IsNullOrEmpty(helper.GameIdGooglePlay))
+            if (string.IsNullOrEmpty(helper.GameIdGooglePlay))
             {
 	            EditorGUILayout.HelpBox("You must put your Game ID for GooglePlay", MessageType.Warning);
             }
