@@ -9,10 +9,13 @@ namespace UnityAdsHelper.Editor
 	    private const string OperateDashboardUrl = "https://dashboard.unity3d.com";
         private const string UnityAdsKnowledgeBaseUrl = "https://unityads.unity3d.com/help/index";
         private const string UnityAdsForumUrl = "https://forum.unity.com/forums/unity-ads.67/";
+        private const string UnityAdsHelperGitHubUrl = "https://github.com/yasuyuki-kamata/UnityAdsHelper";
+        private const string UnityAdsHelperGitHubIssuesUrl = "https://github.com/yasuyuki-kamata/UnityAdsHelper/issues";
 
         private Texture _texture;
 	    private bool _showAdvancedOptions = false;
 	    private bool _showUnityAdsListener = false;
+	    private bool _showGitHubLinks = false;
 
         private void OnEnable()
         {
@@ -96,6 +99,19 @@ namespace UnityAdsHelper.Editor
 	            EditorGUILayout.PropertyField(onAdsSkipped);
 	            var onAdsFailed = serializedObject.FindProperty("onAdsFailed");
 	            EditorGUILayout.PropertyField(onAdsFailed);
+	            EditorGUI.indentLevel--;
+            }
+            
+            EditorGUILayout.Space();
+
+            _showGitHubLinks = EditorGUILayout.Foldout(_showGitHubLinks, "GitHub", true, EditorStyles.foldoutHeader);
+            if (_showGitHubLinks)
+            {
+	            EditorGUI.indentLevel++;
+	            EditorGUILayout.BeginHorizontal();
+	            if (GUILayout.Button("GitHub")) Help.BrowseURL(UnityAdsHelperGitHubUrl);
+	            if (GUILayout.Button("Send Feedback")) Help.BrowseURL(UnityAdsHelperGitHubIssuesUrl);
+	            EditorGUILayout.EndHorizontal();
 	            EditorGUI.indentLevel--;
             }
 
