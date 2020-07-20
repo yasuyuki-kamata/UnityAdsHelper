@@ -32,9 +32,10 @@ namespace UnityAdsHelper.Editor
 	        EditorGUILayout.Space(60f);
 	        
 	        EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Dashboard")) Help.BrowseURL(OperateDashboardUrl);
-            if (GUILayout.Button("Docs")) Help.BrowseURL(UnityAdsKnowledgeBaseUrl);
-            if (GUILayout.Button("Forum")) Help.BrowseURL(UnityAdsForumUrl);
+	        
+            if (GUILayout.Button(UnityAdsHelperLocalize.L10N("Dashboard"))) Help.BrowseURL(OperateDashboardUrl);
+            if (GUILayout.Button(UnityAdsHelperLocalize.L10N("Docs"))) Help.BrowseURL(UnityAdsKnowledgeBaseUrl);
+            if (GUILayout.Button(UnityAdsHelperLocalize.L10N("Forum"))) Help.BrowseURL(UnityAdsForumUrl);
             EditorGUILayout.EndHorizontal();
             
             EditorGUILayout.Space();
@@ -46,20 +47,20 @@ namespace UnityAdsHelper.Editor
 
 	        if (string.IsNullOrEmpty(helper.GameIdAppleAppStore))
             {
-	            EditorGUILayout.HelpBox("You must put your Game ID for Apple AppStore", MessageType.Warning);
+	            EditorGUILayout.HelpBox(UnityAdsHelperLocalize.L10N("You must put your Game ID for Apple AppStore"), MessageType.Warning);
             }
 
 	        EditorGUILayout.Space();
 	        helper.GameIdGooglePlay = EditorGUILayout.TextField("GooglePlay", helper.GameIdGooglePlay);
             if (string.IsNullOrEmpty(helper.GameIdGooglePlay))
             {
-	            EditorGUILayout.HelpBox("You must put your Game ID for GooglePlay", MessageType.Warning);
+	            EditorGUILayout.HelpBox(UnityAdsHelperLocalize.L10N("You must put your Game ID for GooglePlay"), MessageType.Warning);
             }
 	        
 	        EditorGUILayout.Space();
             EditorGUI.indentLevel--;
 
-            helper.UseAnotherGameIdForDevelopment = EditorGUILayout.Toggle("Use Another Game ID for Development", helper.UseAnotherGameIdForDevelopment);
+            helper.UseAnotherGameIdForDevelopment = EditorGUILayout.Toggle(UnityAdsHelperLocalize.L10N("Use Another Game ID for Development"), helper.UseAnotherGameIdForDevelopment);
             
             if (helper.UseAnotherGameIdForDevelopment)
             {
@@ -72,18 +73,18 @@ namespace UnityAdsHelper.Editor
             
             EditorGUILayout.Space();
 
-            _showAdvancedOptions = EditorGUILayout.Foldout(_showAdvancedOptions, "Advanced Options", true, EditorStyles.foldoutHeader);
+            _showAdvancedOptions = EditorGUILayout.Foldout(_showAdvancedOptions, UnityAdsHelperLocalize.L10N("Advanced Options"), true, EditorStyles.foldoutHeader);
             if (_showAdvancedOptions)
             {
 	            EditorGUI.indentLevel++;
-	            helper.InitializeOnStart = EditorGUILayout.Toggle("Initialize on Start", helper.InitializeOnStart);
-	            helper.EnableTestMode = EditorGUILayout.Toggle("Enable Test Mode", helper.EnableTestMode);
+	            helper.InitializeOnStart = EditorGUILayout.Toggle(UnityAdsHelperLocalize.L10N("Initialize on Start"), helper.InitializeOnStart);
+	            helper.EnableTestMode = EditorGUILayout.Toggle(UnityAdsHelperLocalize.L10N("Enable Test Mode"), helper.EnableTestMode);
 	            EditorGUI.indentLevel--;
             }
             
             EditorGUILayout.Space();
 
-            _showUnityAdsListener = EditorGUILayout.Foldout(_showUnityAdsListener, "Unity Ads Listener", true, EditorStyles.foldoutHeader);
+            _showUnityAdsListener = EditorGUILayout.Foldout(_showUnityAdsListener, UnityAdsHelperLocalize.L10N("Unity Ads Listener"), true, EditorStyles.foldoutHeader);
             if (_showUnityAdsListener)
             {
 	            EditorGUI.indentLevel++;
@@ -110,7 +111,7 @@ namespace UnityAdsHelper.Editor
 	            EditorGUI.indentLevel++;
 	            EditorGUILayout.BeginHorizontal();
 	            if (GUILayout.Button("GitHub")) Help.BrowseURL(UnityAdsHelperGitHubUrl);
-	            if (GUILayout.Button("Send Feedback")) Help.BrowseURL(UnityAdsHelperGitHubIssuesUrl);
+	            if (GUILayout.Button(UnityAdsHelperLocalize.L10N("Send Feedback"))) Help.BrowseURL(UnityAdsHelperGitHubIssuesUrl);
 	            EditorGUILayout.EndHorizontal();
 	            EditorGUI.indentLevel--;
             }

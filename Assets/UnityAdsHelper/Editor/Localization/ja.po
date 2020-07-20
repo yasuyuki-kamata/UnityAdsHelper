@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"X-Generator: Poedit 2.3\n"
+
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+msgid "Docs"
+msgstr "ドキュメント"
+
+msgid "Forum"
+msgstr "フォーラム"
+
+msgid "You must put your Game ID for Apple AppStore"
+msgstr "AppStore向けのGame IDを入力してください"
+
+msgid "You must put your Game ID for GooglePlay"
+msgstr "GooglePlay向けのGame IDを入力してください"
+
+msgid "Use Another Game ID for Development"
+msgstr "開発用に別のGame IDを利用する"
+
+msgid "Advanced Options"
+msgstr "オプション"
+
+msgid "Initialize on Start"
+msgstr "開始時に初期化する"
+
+msgid "Enable Test Mode"
+msgstr "テストモードをつかう"
+
+msgid "Unity Ads Listener"
+msgstr "Unity Ads リスナー登録"
+
+msgid "Send Feedback"
+msgstr "ご意見・ご要望"

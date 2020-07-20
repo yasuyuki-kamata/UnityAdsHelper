@@ -1,0 +1,17 @@
+{
+    "name": "UnityAdsHelperEditorAssembly",
+    "references": [
+        "GUID:dcdc5b878e5c2428ba864374ccbc3ffa"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
